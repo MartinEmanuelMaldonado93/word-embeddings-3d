@@ -23,6 +23,7 @@ interface SceneProps {
   active: string | null;
   isHovered: boolean;
   highlighted: Set<string>;
+  hasActive: boolean;
   onHover: (word: string | null) => void;
   onPin: (word: string) => void;
 }
@@ -34,6 +35,7 @@ function Scene({
   active,
   isHovered,
   highlighted,
+  hasActive,
   onHover,
   onPin,
 }: SceneProps) {
@@ -55,6 +57,7 @@ function Scene({
           color={clusterById.get(node.cluster)?.color ?? "#ffffff"}
           isActive={node.word === active}
           isHighlighted={highlighted.has(node.word)}
+          hasActive={hasActive}
           onHover={onHover}
           onPin={onPin}
         />
@@ -226,6 +229,7 @@ export function WordSpace() {
           active={active}
           isHovered={hovered !== null}
           highlighted={highlighted}
+          hasActive={pinned !== null}
           onHover={setHovered}
           onPin={(word) => setPinned((current) => (current === word ? null : word))}
         />

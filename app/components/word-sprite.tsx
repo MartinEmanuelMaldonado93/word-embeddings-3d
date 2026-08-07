@@ -21,9 +21,10 @@ function makeTexture(word: string, dim: boolean): THREE.CanvasTexture {
   ctx.textAlign = "center";
   ctx.textBaseline = "middle";
   if (dim) {
-    ctx.shadowColor = "rgba(255,255,255,0.2)";
-    ctx.shadowBlur = 10;
+    ctx.shadowColor = "rgba(255,255,255,0.15)";
+    ctx.shadowBlur = 8;
     ctx.fillStyle = "#90909c";
+    ctx.globalAlpha = 0.45;
   } else {
     ctx.shadowColor = "rgba(255,255,255,0.85)";
     ctx.shadowBlur = 28;
@@ -41,6 +42,7 @@ interface WordSpriteProps {
   color: string;
   isActive: boolean;
   isHighlighted: boolean;
+  hasActive: boolean;
   onHover: (word: string | null) => void;
   onPin: (word: string) => void;
 }
@@ -50,12 +52,14 @@ export function WordSprite({
   color,
   isActive,
   isHighlighted,
+  hasActive,
   onHover,
   onPin,
 }: WordSpriteProps) {
   const spriteRef = useRef<THREE.Sprite>(null);
   const materialRef = useRef<THREE.SpriteMaterial>(null);
   const target = useRef(new THREE.Vector3());
+  const targetOpacity = useRef(1);
   const [hovering, setHovering] = useState(false);
   useCursor(hovering);
 
@@ -77,6 +81,10 @@ export function WordSprite({
       baseScale.z,
     );
   }, [baseScale, isActive, isHighlighted]);
+
+  useEffect(() => {
+    targetOpacity.current = isActive || isHighlighted ? 1 : hasActive ? 0 : 1;
+  }, [isActive, isHighlighted, hasActive]);
 
   useEffect(() => {
     if (spriteRef.current) {
@@ -103,8 +111,13 @@ export function WordSprite({
 
   useFrame((_, delta) => {
     const sprite = spriteRef.current;
+    const material = materialRef.current;
     if (sprite) {
       sprite.scale.lerp(target.current, Math.min(1, delta * 9));
+    }
+    if (material) {
+      material.opacity +=
+        (targetOpacity.current - material.opacity) * Math.min(1, delta * 9);
     }
   });
 
