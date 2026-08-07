@@ -31,7 +31,7 @@ WORDS: dict[str, list[str]] = {
     "emotions": ["happy", "sad", "angry", "fear", "love", "hate", "joy", "grief"],
 }
 
-K_NEIGHBORS = 5
+K_NEIGHBORS = 8
 N_CLUSTERS = len(WORDS)
 RANDOM_STATE = 42
 

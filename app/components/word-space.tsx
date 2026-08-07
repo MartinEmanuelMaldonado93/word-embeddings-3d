@@ -24,6 +24,7 @@ interface SceneProps {
   isHovered: boolean;
   highlighted: Set<string>;
   hasActive: boolean;
+  neighborCount: number;
   onHover: (word: string | null) => void;
   onPin: (word: string) => void;
 }
@@ -36,6 +37,7 @@ function Scene({
   isHovered,
   highlighted,
   hasActive,
+  neighborCount,
   onHover,
   onPin,
 }: SceneProps) {
@@ -68,6 +70,7 @@ function Scene({
           node={activeNode}
           byWord={byWord}
           colorOf={colorOf}
+          neighborCount={neighborCount}
         />
       )}
 
@@ -127,12 +130,40 @@ function Legend({ clusters }: { clusters: ClusterInfo[] }) {
   );
 }
 
+function NeighborSlider({
+  value,
+  onChange,
+}: {
+  value: number;
+  onChange: (count: number) => void;
+}) {
+  return (
+    <div className="absolute bottom-6 right-6 z-10 rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-md">
+      <div className="mb-2 flex items-center justify-between gap-6 text-sm">
+        <span className="text-neutral-400">Neighbors</span>
+        <span className="font-mono text-neutral-100">{value}</span>
+      </div>
+      <input
+        type="range"
+        min={3}
+        max={8}
+        step={1}
+        value={value}
+        onChange={(event) => onChange(Number(event.target.value))}
+        className="w-40 accent-emerald-400"
+      />
+    </div>
+  );
+}
+
 function InfoPanel({
   node,
   colorOf,
+  neighborCount,
 }: {
   node: WordNode | null;
   colorOf: (word: string) => string;
+  neighborCount: number;
 }) {
   if (!node) {
     return (
@@ -155,7 +186,7 @@ function InfoPanel({
         cluster #{node.cluster}
       </div>
       <div className="mt-4 space-y-2.5">
-        {node.neighbors.map((neighbor) => (
+        {node.neighbors.slice(0, neighborCount).map((neighbor) => (
           <div key={neighbor.word} className="flex items-center gap-3">
             <span className="w-16 shrink-0 text-sm font-medium text-neutral-100">
               {neighbor.word}
@@ -186,6 +217,7 @@ export function WordSpace() {
   const mounted = useMounted();
   const [hovered, setHovered] = useState<string | null>(null);
   const [pinned, setPinned] = useState<string | null>(null);
+  const [neighborCount, setNeighborCount] = useState(5);
 
   const byWord = useMemo(
     () => new Map(data.words.map((word) => [word.word, word])),
@@ -202,11 +234,13 @@ export function WordSpace() {
   const highlighted = useMemo(() => {
     const set = new Set<string>();
     if (activeNode) {
-      for (const neighbor of activeNode.neighbors) set.add(neighbor.word);
+      for (const neighbor of activeNode.neighbors.slice(0, neighborCount)) {
+        set.add(neighbor.word);
+      }
       set.add(activeNode.word);
     }
     return set;
-  }, [activeNode]);
+  }, [activeNode, neighborCount]);
 
   if (!mounted) {
     return <div className="h-screen w-screen" />;
@@ -230,6 +264,7 @@ export function WordSpace() {
           isHovered={hovered !== null}
           highlighted={highlighted}
           hasActive={pinned !== null}
+          neighborCount={neighborCount}
           onHover={setHovered}
           onPin={(word) => setPinned((current) => (current === word ? null : word))}
         />
@@ -243,12 +278,14 @@ export function WordSpace() {
 
       <Header />
       <Legend clusters={data.clusters} />
+      <NeighborSlider value={neighborCount} onChange={setNeighborCount} />
       <InfoPanel
         node={activeNode}
         colorOf={(word) => {
           const node = byWord.get(word);
           return node ? (clusterById.get(node.cluster)?.color ?? "#ffffff") : "#ffffff";
         }}
+        neighborCount={neighborCount}
       />
     </div>
   );

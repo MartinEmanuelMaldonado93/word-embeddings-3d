@@ -27,6 +27,18 @@
         {
           "word": "throne",
           "sim": 0.754
+        },
+        {
+          "word": "brother",
+          "sim": 0.749
+        },
+        {
+          "word": "father",
+          "sim": 0.734
+        },
+        {
+          "word": "monarch",
+          "sim": 0.719
         }
       ]
     },
@@ -57,6 +69,18 @@
         {
           "word": "daughter",
           "sim": 0.728
+        },
+        {
+          "word": "throne",
+          "sim": 0.728
+        },
+        {
+          "word": "sister",
+          "sim": 0.714
+        },
+        {
+          "word": "mother",
+          "sim": 0.7
         }
       ]
     },
@@ -87,6 +111,18 @@
         {
           "word": "princess",
           "sim": 0.743
+        },
+        {
+          "word": "uncle",
+          "sim": 0.724
+        },
+        {
+          "word": "throne",
+          "sim": 0.716
+        },
+        {
+          "word": "father",
+          "sim": 0.71
         }
       ]
     },
@@ -117,6 +153,18 @@
         {
           "word": "aunt",
           "sim": 0.735
+        },
+        {
+          "word": "mother",
+          "sim": 0.693
+        },
+        {
+          "word": "son",
+          "sim": 0.61
+        },
+        {
+          "word": "throne",
+          "sim": 0.608
         }
       ]
     },
@@ -147,6 +195,18 @@
         {
           "word": "prince",
           "sim": 0.617
+        },
+        {
+          "word": "empire",
+          "sim": 0.523
+        },
+        {
+          "word": "princess",
+          "sim": 0.522
+        },
+        {
+          "word": "father",
+          "sim": 0.504
         }
       ]
     },
@@ -177,6 +237,18 @@
         {
           "word": "monarch",
           "sim": 0.64
+        },
+        {
+          "word": "empire",
+          "sim": 0.603
+        },
+        {
+          "word": "princess",
+          "sim": 0.6
+        },
+        {
+          "word": "horse",
+          "sim": 0.572
         }
       ]
     },
@@ -207,6 +279,18 @@
         {
           "word": "prince",
           "sim": 0.716
+        },
+        {
+          "word": "empire",
+          "sim": 0.63
+        },
+        {
+          "word": "princess",
+          "sim": 0.608
+        },
+        {
+          "word": "son",
+          "sim": 0.583
         }
       ]
     },
@@ -237,6 +321,18 @@
         {
           "word": "queen",
           "sim": 0.524
+        },
+        {
+          "word": "monarch",
+          "sim": 0.523
+        },
+        {
+          "word": "father",
+          "sim": 0.441
+        },
+        {
+          "word": "lion",
+          "sim": 0.439
         }
       ]
     },
@@ -267,6 +363,18 @@
         {
           "word": "bird",
           "sim": 0.696
+        },
+        {
+          "word": "cow",
+          "sim": 0.653
+        },
+        {
+          "word": "tiger",
+          "sim": 0.615
+        },
+        {
+          "word": "pink",
+          "sim": 0.585
         }
       ]
     },
@@ -297,6 +405,18 @@
         {
           "word": "cow",
           "sim": 0.664
+        },
+        {
+          "word": "lion",
+          "sim": 0.637
+        },
+        {
+          "word": "tiger",
+          "sim": 0.626
+        },
+        {
+          "word": "happy",
+          "sim": 0.584
         }
       ]
     },
@@ -327,6 +447,18 @@
         {
           "word": "crown",
           "sim": 0.572
+        },
+        {
+          "word": "pig",
+          "sim": 0.558
+        },
+        {
+          "word": "yellow",
+          "sim": 0.543
+        },
+        {
+          "word": "green",
+          "sim": 0.532
         }
       ]
     },
@@ -357,6 +489,18 @@
         {
           "word": "horse",
           "sim": 0.52
+        },
+        {
+          "word": "tiger",
+          "sim": 0.471
+        },
+        {
+          "word": "yellow",
+          "sim": 0.456
+        },
+        {
+          "word": "lion",
+          "sim": 0.45
         }
       ]
     },
@@ -387,6 +531,18 @@
         {
           "word": "lion",
           "sim": 0.573
+        },
+        {
+          "word": "horse",
+          "sim": 0.558
+        },
+        {
+          "word": "yellow",
+          "sim": 0.455
+        },
+        {
+          "word": "pink",
+          "sim": 0.454
         }
       ]
     },
@@ -417,6 +573,18 @@
         {
           "word": "tiger",
           "sim": 0.569
+        },
+        {
+          "word": "red",
+          "sim": 0.55
+        },
+        {
+          "word": "yellow",
+          "sim": 0.53
+        },
+        {
+          "word": "lion",
+          "sim": 0.525
         }
       ]
     },
@@ -447,6 +615,18 @@
         {
           "word": "pig",
           "sim": 0.573
+        },
+        {
+          "word": "tiger",
+          "sim": 0.549
+        },
+        {
+          "word": "purple",
+          "sim": 0.549
+        },
+        {
+          "word": "red",
+          "sim": 0.536
         }
       ]
     },
@@ -477,6 +657,18 @@
         {
           "word": "lion",
           "sim": 0.549
+        },
+        {
+          "word": "red",
+          "sim": 0.527
+        },
+        {
+          "word": "green",
+          "sim": 0.474
+        },
+        {
+          "word": "cow",
+          "sim": 0.471
         }
       ]
     },
@@ -507,6 +699,18 @@
         {
           "word": "daughter",
           "sim": 0.89
+        },
+        {
+          "word": "sister",
+          "sim": 0.759
+        },
+        {
+          "word": "king",
+          "sim": 0.734
+        },
+        {
+          "word": "aunt",
+          "sim": 0.726
         }
       ]
     },
@@ -537,6 +741,18 @@
         {
           "word": "son",
           "sim": 0.835
+        },
+        {
+          "word": "brother",
+          "sim": 0.78
+        },
+        {
+          "word": "uncle",
+          "sim": 0.77
+        },
+        {
+          "word": "love",
+          "sim": 0.748
         }
       ]
     },
@@ -567,6 +783,18 @@
         {
           "word": "mother",
           "sim": 0.78
+        },
+        {
+          "word": "prince",
+          "sim": 0.759
+        },
+        {
+          "word": "king",
+          "sim": 0.749
+        },
+        {
+          "word": "sister",
+          "sim": 0.725
         }
       ]
     },
@@ -597,6 +825,18 @@
         {
           "word": "father",
           "sim": 0.759
+        },
+        {
+          "word": "son",
+          "sim": 0.75
+        },
+        {
+          "word": "brother",
+          "sim": 0.725
+        },
+        {
+          "word": "queen",
+          "sim": 0.714
         }
       ]
     },
@@ -627,6 +867,18 @@
         {
           "word": "mother",
           "sim": 0.835
+        },
+        {
+          "word": "king",
+          "sim": 0.767
+        },
+        {
+          "word": "prince",
+          "sim": 0.764
+        },
+        {
+          "word": "sister",
+          "sim": 0.75
         }
       ]
     },
@@ -657,6 +909,18 @@
         {
           "word": "aunt",
           "sim": 0.879
+        },
+        {
+          "word": "brother",
+          "sim": 0.827
+        },
+        {
+          "word": "uncle",
+          "sim": 0.811
+        },
+        {
+          "word": "princess",
+          "sim": 0.74
         }
       ]
     },
@@ -687,6 +951,18 @@
         {
           "word": "mother",
           "sim": 0.77
+        },
+        {
+          "word": "aunt",
+          "sim": 0.763
+        },
+        {
+          "word": "king",
+          "sim": 0.763
+        },
+        {
+          "word": "prince",
+          "sim": 0.724
         }
       ]
     },
@@ -717,6 +993,18 @@
         {
           "word": "princess",
           "sim": 0.735
+        },
+        {
+          "word": "son",
+          "sim": 0.732
+        },
+        {
+          "word": "father",
+          "sim": 0.726
+        },
+        {
+          "word": "brother",
+          "sim": 0.649
         }
       ]
     },
@@ -747,6 +1035,18 @@
         {
           "word": "pink",
           "sim": 0.815
+        },
+        {
+          "word": "orange",
+          "sim": 0.804
+        },
+        {
+          "word": "brown",
+          "sim": 0.715
+        },
+        {
+          "word": "dog",
+          "sim": 0.572
         }
       ]
     },
@@ -777,6 +1077,18 @@
         {
           "word": "purple",
           "sim": 0.829
+        },
+        {
+          "word": "orange",
+          "sim": 0.811
+        },
+        {
+          "word": "brown",
+          "sim": 0.714
+        },
+        {
+          "word": "lion",
+          "sim": 0.584
         }
       ]
     },
@@ -807,6 +1119,18 @@
         {
           "word": "orange",
           "sim": 0.757
+        },
+        {
+          "word": "pink",
+          "sim": 0.755
+        },
+        {
+          "word": "purple",
+          "sim": 0.749
+        },
+        {
+          "word": "dog",
+          "sim": 0.559
         }
       ]
     },
@@ -837,6 +1161,18 @@
         {
           "word": "green",
           "sim": 0.793
+        },
+        {
+          "word": "orange",
+          "sim": 0.784
+        },
+        {
+          "word": "brown",
+          "sim": 0.591
+        },
+        {
+          "word": "dog",
+          "sim": 0.545
         }
       ]
     },
@@ -867,6 +1203,18 @@
         {
           "word": "orange",
           "sim": 0.77
+        },
+        {
+          "word": "green",
+          "sim": 0.749
+        },
+        {
+          "word": "brown",
+          "sim": 0.623
+        },
+        {
+          "word": "lion",
+          "sim": 0.549
         }
       ]
     },
@@ -897,6 +1245,18 @@
         {
           "word": "pink",
           "sim": 0.764
+        },
+        {
+          "word": "green",
+          "sim": 0.757
+        },
+        {
+          "word": "brown",
+          "sim": 0.627
+        },
+        {
+          "word": "dog",
+          "sim": 0.429
         }
       ]
     },
@@ -927,6 +1287,18 @@
         {
           "word": "orange",
           "sim": 0.764
+        },
+        {
+          "word": "green",
+          "sim": 0.755
+        },
+        {
+          "word": "brown",
+          "sim": 0.626
+        },
+        {
+          "word": "cat",
+          "sim": 0.585
         }
       ]
     },
@@ -957,6 +1329,18 @@
         {
           "word": "pink",
           "sim": 0.626
+        },
+        {
+          "word": "purple",
+          "sim": 0.623
+        },
+        {
+          "word": "yellow",
+          "sim": 0.591
+        },
+        {
+          "word": "love",
+          "sim": 0.502
         }
       ]
     },
@@ -987,6 +1371,18 @@
         {
           "word": "dog",
           "sim": 0.584
+        },
+        {
+          "word": "angry",
+          "sim": 0.571
+        },
+        {
+          "word": "father",
+          "sim": 0.557
+        },
+        {
+          "word": "fear",
+          "sim": 0.552
         }
       ]
     },
@@ -1017,6 +1413,18 @@
         {
           "word": "fear",
           "sim": 0.493
+        },
+        {
+          "word": "angry",
+          "sim": 0.491
+        },
+        {
+          "word": "hate",
+          "sim": 0.457
+        },
+        {
+          "word": "mother",
+          "sim": 0.456
         }
       ]
     },
@@ -1047,6 +1455,18 @@
         {
           "word": "sad",
           "sim": 0.491
+        },
+        {
+          "word": "love",
+          "sim": 0.473
+        },
+        {
+          "word": "joy",
+          "sim": 0.465
+        },
+        {
+          "word": "mother",
+          "sim": 0.444
         }
       ]
     },
@@ -1077,6 +1497,18 @@
         {
           "word": "happy",
           "sim": 0.552
+        },
+        {
+          "word": "sad",
+          "sim": 0.493
+        },
+        {
+          "word": "joy",
+          "sim": 0.448
+        },
+        {
+          "word": "father",
+          "sim": 0.438
         }
       ]
     },
@@ -1107,6 +1539,18 @@
         {
           "word": "father",
           "sim": 0.664
+        },
+        {
+          "word": "hate",
+          "sim": 0.646
+        },
+        {
+          "word": "aunt",
+          "sim": 0.643
+        },
+        {
+          "word": "daughter",
+          "sim": 0.641
         }
       ]
     },
@@ -1137,6 +1581,18 @@
         {
           "word": "sad",
           "sim": 0.457
+        },
+        {
+          "word": "dog",
+          "sim": 0.441
+        },
+        {
+          "word": "joy",
+          "sim": 0.439
+        },
+        {
+          "word": "grief",
+          "sim": 0.419
         }
       ]
     },
@@ -1167,6 +1623,18 @@
         {
           "word": "sad",
           "sim": 0.556
+        },
+        {
+          "word": "father",
+          "sim": 0.503
+        },
+        {
+          "word": "aunt",
+          "sim": 0.491
+        },
+        {
+          "word": "daughter",
+          "sim": 0.482
         }
       ]
     },
@@ -1197,6 +1665,18 @@
         {
           "word": "angry",
           "sim": 0.562
+        },
+        {
+          "word": "mother",
+          "sim": 0.543
+        },
+        {
+          "word": "aunt",
+          "sim": 0.449
+        },
+        {
+          "word": "father",
+          "sim": 0.441
         }
       ]
     }

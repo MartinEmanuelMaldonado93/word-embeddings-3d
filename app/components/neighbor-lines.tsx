@@ -6,12 +6,18 @@ interface NeighborLinesProps {
   node: WordNode;
   byWord: Map<string, WordNode>;
   colorOf: (word: string) => string;
+  neighborCount: number;
 }
 
-export function NeighborLines({ node, byWord, colorOf }: NeighborLinesProps) {
+export function NeighborLines({
+  node,
+  byWord,
+  colorOf,
+  neighborCount,
+}: NeighborLinesProps) {
   return (
     <group>
-      {node.neighbors.map((neighbor) => {
+      {node.neighbors.slice(0, neighborCount).map((neighbor) => {
         const targetNode = byWord.get(neighbor.word);
         if (!targetNode) return null;
         return (
