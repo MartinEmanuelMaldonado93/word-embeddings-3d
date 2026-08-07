@@ -1,87 +1,54 @@
-# Welcome to React Router!
+# Word Embeddings 3D
 
-A modern, production-ready template for building full-stack React applications using React Router.
+Interactive 3D map of word embeddings: words float in space, and semantically
+close words (nearby in vector space) sit next to each other — the same idea as
+the famous 3Blue1Brown LLM video, hyper-simplified.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
+## How it works
 
-## Features
+1. **Embeddings (offline, Python)** — `scripts/embed.py` loads a small
+   curated list of 40 English words and pulls their 50-dimensional
+   [GloVe](https://nlp.stanford.edu/projects/glove/) vectors.
+2. **Dimensionality reduction** — PCA projects 50d → 3d (deterministic, ~52%
+   of the variance kept). Words are clustered with k-means for color coding.
+3. **Neighbors** — the top-5 nearest neighbors per word are computed by cosine
+   similarity in the original 50d space (more faithful than the 3D projection).
+4. **Rendering** — React Router 8 + React 19 + `three` + `@react-three/fiber`.
+   Hover a word to grow it, highlight its cluster, and draw lines to its
+   nearest neighbors.
 
-- 🚀 Server-side rendering
-- ⚡️ Hot Module Replacement (HMR)
-- 📦 Asset bundling and optimization
-- 🔄 Data loading and mutations
-- 🔒 TypeScript by default
-- 🎉 TailwindCSS for styling
-- 📖 [React Router docs](https://reactrouter.com/)
+## Development
 
-## Getting Started
-
-### Installation
-
-Install the dependencies:
-
-```bash
-npm install
-```
-
-### Development
-
-Start the development server with HMR:
+Uses [Bun](https://bun.sh) as package manager and runner.
 
 ```bash
-npm run dev
+bun install
+bun dev          # dev server with HMR
+bun run build    # production build
+bun run start    # serve the production build
+bun run typecheck
 ```
 
-Your application will be available at `http://localhost:5173`.
-
-## Building for Production
-
-Create a production build:
+## Regenerating the word data
 
 ```bash
-npm run build
+./venv/bin/python scripts/embed.py
 ```
 
-## Deployment
+This rewrites `app/data/words.json`. Edit `WORDS` in `scripts/embed.py` to
+change the vocabulary, then re-run.
 
-### Docker Deployment
-
-To build and run using Docker:
+### Python environment (first time)
 
 ```bash
-docker build -t my-app .
-
-# Run the container
-docker run -p 3000:3000 my-app
+python3 -m venv venv
+./venv/bin/pip install numpy scikit-learn
 ```
 
-The containerized application can be deployed to any platform that supports Docker, including:
+The GloVe vectors (`scripts/data/glove-wiki-gigaword-50.gz`, ~66 MB) are
+downloaded once from [gensim-data](https://github.com/RaRe-Technologies/gensim-data).
 
-- AWS ECS
-- Google Cloud Run
-- Azure Container Apps
-- Digital Ocean App Platform
-- Fly.io
-- Railway
+## Stack
 
-### DIY Deployment
-
-If you're familiar with deploying Node applications, the built-in app server is production-ready.
-
-Make sure to deploy the output of `npm run build`
-
-```
-├── package.json
-├── package-lock.json (or pnpm-lock.yaml, or bun.lockb)
-├── build/
-│   ├── client/    # Static assets
-│   └── server/    # Server-side code
-```
-
-## Styling
-
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
-
----
-
-Built with ❤️ using React Router.
+React Router 8 (framework mode) · React 19 · TypeScript 7 · three 0.185 ·
+@react-three/fiber 9 · @react-three/drei 10 · Tailwind CSS 4 · Vite 8 · Bun

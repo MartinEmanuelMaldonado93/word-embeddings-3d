@@ -1,0 +1,1231 @@
+{
+  "words": [
+    {
+      "word": "king",
+      "family": "royalty",
+      "cluster": 1,
+      "x": -5.2065,
+      "y": -3.157,
+      "z": 1.0559,
+      "neighbors": [
+        {
+          "word": "prince",
+          "sim": 0.824
+        },
+        {
+          "word": "queen",
+          "sim": 0.784
+        },
+        {
+          "word": "son",
+          "sim": 0.767
+        },
+        {
+          "word": "uncle",
+          "sim": 0.763
+        },
+        {
+          "word": "throne",
+          "sim": 0.754
+        }
+      ]
+    },
+    {
+      "word": "queen",
+      "family": "royalty",
+      "cluster": 1,
+      "x": -3.7127,
+      "y": -4.4026,
+      "z": -0.7469,
+      "neighbors": [
+        {
+          "word": "princess",
+          "sim": 0.852
+        },
+        {
+          "word": "king",
+          "sim": 0.784
+        },
+        {
+          "word": "prince",
+          "sim": 0.782
+        },
+        {
+          "word": "crown",
+          "sim": 0.738
+        },
+        {
+          "word": "daughter",
+          "sim": 0.728
+        }
+      ]
+    },
+    {
+      "word": "prince",
+      "family": "royalty",
+      "cluster": 1,
+      "x": -6.4093,
+      "y": -4.0702,
+      "z": -0.5162,
+      "neighbors": [
+        {
+          "word": "king",
+          "sim": 0.824
+        },
+        {
+          "word": "queen",
+          "sim": 0.782
+        },
+        {
+          "word": "son",
+          "sim": 0.764
+        },
+        {
+          "word": "brother",
+          "sim": 0.759
+        },
+        {
+          "word": "princess",
+          "sim": 0.743
+        }
+      ]
+    },
+    {
+      "word": "princess",
+      "family": "royalty",
+      "cluster": 1,
+      "x": -4.9306,
+      "y": -3.0915,
+      "z": -0.3821,
+      "neighbors": [
+        {
+          "word": "queen",
+          "sim": 0.852
+        },
+        {
+          "word": "sister",
+          "sim": 0.764
+        },
+        {
+          "word": "prince",
+          "sim": 0.743
+        },
+        {
+          "word": "daughter",
+          "sim": 0.74
+        },
+        {
+          "word": "aunt",
+          "sim": 0.735
+        }
+      ]
+    },
+    {
+      "word": "monarch",
+      "family": "royalty",
+      "cluster": 1,
+      "x": -4.1669,
+      "y": -4.6636,
+      "z": 3.0924,
+      "neighbors": [
+        {
+          "word": "throne",
+          "sim": 0.765
+        },
+        {
+          "word": "king",
+          "sim": 0.719
+        },
+        {
+          "word": "queen",
+          "sim": 0.677
+        },
+        {
+          "word": "crown",
+          "sim": 0.64
+        },
+        {
+          "word": "prince",
+          "sim": 0.617
+        }
+      ]
+    },
+    {
+      "word": "crown",
+      "family": "royalty",
+      "cluster": 1,
+      "x": -1.9453,
+      "y": -7.3598,
+      "z": -0.6574,
+      "neighbors": [
+        {
+          "word": "throne",
+          "sim": 0.751
+        },
+        {
+          "word": "queen",
+          "sim": 0.738
+        },
+        {
+          "word": "prince",
+          "sim": 0.702
+        },
+        {
+          "word": "king",
+          "sim": 0.678
+        },
+        {
+          "word": "monarch",
+          "sim": 0.64
+        }
+      ]
+    },
+    {
+      "word": "throne",
+      "family": "royalty",
+      "cluster": 1,
+      "x": -6.1492,
+      "y": -6.0495,
+      "z": 0.0615,
+      "neighbors": [
+        {
+          "word": "monarch",
+          "sim": 0.765
+        },
+        {
+          "word": "king",
+          "sim": 0.754
+        },
+        {
+          "word": "crown",
+          "sim": 0.751
+        },
+        {
+          "word": "queen",
+          "sim": 0.728
+        },
+        {
+          "word": "prince",
+          "sim": 0.716
+        }
+      ]
+    },
+    {
+      "word": "empire",
+      "family": "royalty",
+      "cluster": 1,
+      "x": -2.9416,
+      "y": -4.4207,
+      "z": 0.8703,
+      "neighbors": [
+        {
+          "word": "king",
+          "sim": 0.686
+        },
+        {
+          "word": "throne",
+          "sim": 0.63
+        },
+        {
+          "word": "crown",
+          "sim": 0.603
+        },
+        {
+          "word": "prince",
+          "sim": 0.546
+        },
+        {
+          "word": "queen",
+          "sim": 0.524
+        }
+      ]
+    },
+    {
+      "word": "cat",
+      "family": "animals",
+      "cluster": 3,
+      "x": 4.0831,
+      "y": 0.3097,
+      "z": 5.254,
+      "neighbors": [
+        {
+          "word": "dog",
+          "sim": 0.922
+        },
+        {
+          "word": "pig",
+          "sim": 0.745
+        },
+        {
+          "word": "horse",
+          "sim": 0.702
+        },
+        {
+          "word": "lion",
+          "sim": 0.701
+        },
+        {
+          "word": "bird",
+          "sim": 0.696
+        }
+      ]
+    },
+    {
+      "word": "dog",
+      "family": "animals",
+      "cluster": 3,
+      "x": 4.3219,
+      "y": 1.4932,
+      "z": 4.9496,
+      "neighbors": [
+        {
+          "word": "cat",
+          "sim": 0.922
+        },
+        {
+          "word": "horse",
+          "sim": 0.791
+        },
+        {
+          "word": "pig",
+          "sim": 0.749
+        },
+        {
+          "word": "bird",
+          "sim": 0.669
+        },
+        {
+          "word": "cow",
+          "sim": 0.664
+        }
+      ]
+    },
+    {
+      "word": "horse",
+      "family": "animals",
+      "cluster": 3,
+      "x": 2.9187,
+      "y": -2.4933,
+      "z": 4.5198,
+      "neighbors": [
+        {
+          "word": "dog",
+          "sim": 0.791
+        },
+        {
+          "word": "cat",
+          "sim": 0.702
+        },
+        {
+          "word": "lion",
+          "sim": 0.612
+        },
+        {
+          "word": "tiger",
+          "sim": 0.584
+        },
+        {
+          "word": "crown",
+          "sim": 0.572
+        }
+      ]
+    },
+    {
+      "word": "cow",
+      "family": "animals",
+      "cluster": 3,
+      "x": 4.6498,
+      "y": 1.3478,
+      "z": 6.5929,
+      "neighbors": [
+        {
+          "word": "pig",
+          "sim": 0.829
+        },
+        {
+          "word": "bird",
+          "sim": 0.735
+        },
+        {
+          "word": "dog",
+          "sim": 0.664
+        },
+        {
+          "word": "cat",
+          "sim": 0.653
+        },
+        {
+          "word": "horse",
+          "sim": 0.52
+        }
+      ]
+    },
+    {
+      "word": "pig",
+      "family": "animals",
+      "cluster": 3,
+      "x": 5.2103,
+      "y": 1.3995,
+      "z": 6.9605,
+      "neighbors": [
+        {
+          "word": "cow",
+          "sim": 0.829
+        },
+        {
+          "word": "dog",
+          "sim": 0.749
+        },
+        {
+          "word": "cat",
+          "sim": 0.745
+        },
+        {
+          "word": "bird",
+          "sim": 0.689
+        },
+        {
+          "word": "lion",
+          "sim": 0.573
+        }
+      ]
+    },
+    {
+      "word": "bird",
+      "family": "animals",
+      "cluster": 3,
+      "x": 5.0367,
+      "y": 0.6236,
+      "z": 5.8143,
+      "neighbors": [
+        {
+          "word": "cow",
+          "sim": 0.735
+        },
+        {
+          "word": "cat",
+          "sim": 0.696
+        },
+        {
+          "word": "pig",
+          "sim": 0.689
+        },
+        {
+          "word": "dog",
+          "sim": 0.669
+        },
+        {
+          "word": "tiger",
+          "sim": 0.569
+        }
+      ]
+    },
+    {
+      "word": "lion",
+      "family": "animals",
+      "cluster": 3,
+      "x": 3.6114,
+      "y": -3.3327,
+      "z": 3.5253,
+      "neighbors": [
+        {
+          "word": "cat",
+          "sim": 0.701
+        },
+        {
+          "word": "dog",
+          "sim": 0.637
+        },
+        {
+          "word": "horse",
+          "sim": 0.612
+        },
+        {
+          "word": "blue",
+          "sim": 0.584
+        },
+        {
+          "word": "pig",
+          "sim": 0.573
+        }
+      ]
+    },
+    {
+      "word": "tiger",
+      "family": "animals",
+      "cluster": 3,
+      "x": 4.2012,
+      "y": -0.0016,
+      "z": 4.6383,
+      "neighbors": [
+        {
+          "word": "dog",
+          "sim": 0.626
+        },
+        {
+          "word": "cat",
+          "sim": 0.615
+        },
+        {
+          "word": "horse",
+          "sim": 0.584
+        },
+        {
+          "word": "bird",
+          "sim": 0.569
+        },
+        {
+          "word": "lion",
+          "sim": 0.549
+        }
+      ]
+    },
+    {
+      "word": "father",
+      "family": "family",
+      "cluster": 0,
+      "x": -6.2295,
+      "y": 0.8548,
+      "z": -0.347,
+      "neighbors": [
+        {
+          "word": "son",
+          "sim": 0.953
+        },
+        {
+          "word": "brother",
+          "sim": 0.932
+        },
+        {
+          "word": "uncle",
+          "sim": 0.898
+        },
+        {
+          "word": "mother",
+          "sim": 0.891
+        },
+        {
+          "word": "daughter",
+          "sim": 0.89
+        }
+      ]
+    },
+    {
+      "word": "mother",
+      "family": "family",
+      "cluster": 0,
+      "x": -4.6608,
+      "y": 2.2673,
+      "z": -0.7177,
+      "neighbors": [
+        {
+          "word": "daughter",
+          "sim": 0.946
+        },
+        {
+          "word": "father",
+          "sim": 0.891
+        },
+        {
+          "word": "sister",
+          "sim": 0.891
+        },
+        {
+          "word": "aunt",
+          "sim": 0.876
+        },
+        {
+          "word": "son",
+          "sim": 0.835
+        }
+      ]
+    },
+    {
+      "word": "brother",
+      "family": "family",
+      "cluster": 0,
+      "x": -6.391,
+      "y": -0.3407,
+      "z": -0.1992,
+      "neighbors": [
+        {
+          "word": "son",
+          "sim": 0.945
+        },
+        {
+          "word": "father",
+          "sim": 0.932
+        },
+        {
+          "word": "uncle",
+          "sim": 0.915
+        },
+        {
+          "word": "daughter",
+          "sim": 0.827
+        },
+        {
+          "word": "mother",
+          "sim": 0.78
+        }
+      ]
+    },
+    {
+      "word": "sister",
+      "family": "family",
+      "cluster": 0,
+      "x": -5.0012,
+      "y": 0.7813,
+      "z": -1.9896,
+      "neighbors": [
+        {
+          "word": "daughter",
+          "sim": 0.893
+        },
+        {
+          "word": "mother",
+          "sim": 0.891
+        },
+        {
+          "word": "aunt",
+          "sim": 0.821
+        },
+        {
+          "word": "princess",
+          "sim": 0.764
+        },
+        {
+          "word": "father",
+          "sim": 0.759
+        }
+      ]
+    },
+    {
+      "word": "son",
+      "family": "family",
+      "cluster": 0,
+      "x": -6.6656,
+      "y": -0.335,
+      "z": 0.3433,
+      "neighbors": [
+        {
+          "word": "father",
+          "sim": 0.953
+        },
+        {
+          "word": "brother",
+          "sim": 0.945
+        },
+        {
+          "word": "uncle",
+          "sim": 0.921
+        },
+        {
+          "word": "daughter",
+          "sim": 0.896
+        },
+        {
+          "word": "mother",
+          "sim": 0.835
+        }
+      ]
+    },
+    {
+      "word": "daughter",
+      "family": "family",
+      "cluster": 0,
+      "x": -6.4453,
+      "y": 0.1067,
+      "z": -0.8477,
+      "neighbors": [
+        {
+          "word": "mother",
+          "sim": 0.946
+        },
+        {
+          "word": "son",
+          "sim": 0.896
+        },
+        {
+          "word": "sister",
+          "sim": 0.893
+        },
+        {
+          "word": "father",
+          "sim": 0.89
+        },
+        {
+          "word": "aunt",
+          "sim": 0.879
+        }
+      ]
+    },
+    {
+      "word": "uncle",
+      "family": "family",
+      "cluster": 0,
+      "x": -6.548,
+      "y": 0.0007,
+      "z": 0.769,
+      "neighbors": [
+        {
+          "word": "son",
+          "sim": 0.921
+        },
+        {
+          "word": "brother",
+          "sim": 0.915
+        },
+        {
+          "word": "father",
+          "sim": 0.898
+        },
+        {
+          "word": "daughter",
+          "sim": 0.811
+        },
+        {
+          "word": "mother",
+          "sim": 0.77
+        }
+      ]
+    },
+    {
+      "word": "aunt",
+      "family": "family",
+      "cluster": 0,
+      "x": -5.4619,
+      "y": 1.4699,
+      "z": -0.7301,
+      "neighbors": [
+        {
+          "word": "daughter",
+          "sim": 0.879
+        },
+        {
+          "word": "mother",
+          "sim": 0.876
+        },
+        {
+          "word": "sister",
+          "sim": 0.821
+        },
+        {
+          "word": "uncle",
+          "sim": 0.763
+        },
+        {
+          "word": "princess",
+          "sim": 0.735
+        }
+      ]
+    },
+    {
+      "word": "red",
+      "family": "colors",
+      "cluster": 2,
+      "x": 6.704,
+      "y": -2.2439,
+      "z": -3.2888,
+      "neighbors": [
+        {
+          "word": "yellow",
+          "sim": 0.9
+        },
+        {
+          "word": "blue",
+          "sim": 0.89
+        },
+        {
+          "word": "green",
+          "sim": 0.856
+        },
+        {
+          "word": "purple",
+          "sim": 0.832
+        },
+        {
+          "word": "pink",
+          "sim": 0.815
+        }
+      ]
+    },
+    {
+      "word": "blue",
+      "family": "colors",
+      "cluster": 2,
+      "x": 7.3329,
+      "y": -2.4478,
+      "z": -3.8056,
+      "neighbors": [
+        {
+          "word": "red",
+          "sim": 0.89
+        },
+        {
+          "word": "pink",
+          "sim": 0.845
+        },
+        {
+          "word": "green",
+          "sim": 0.835
+        },
+        {
+          "word": "yellow",
+          "sim": 0.832
+        },
+        {
+          "word": "purple",
+          "sim": 0.829
+        }
+      ]
+    },
+    {
+      "word": "green",
+      "family": "colors",
+      "cluster": 2,
+      "x": 6.5383,
+      "y": -1.9568,
+      "z": -3.5969,
+      "neighbors": [
+        {
+          "word": "red",
+          "sim": 0.856
+        },
+        {
+          "word": "brown",
+          "sim": 0.84
+        },
+        {
+          "word": "blue",
+          "sim": 0.835
+        },
+        {
+          "word": "yellow",
+          "sim": 0.793
+        },
+        {
+          "word": "orange",
+          "sim": 0.757
+        }
+      ]
+    },
+    {
+      "word": "yellow",
+      "family": "colors",
+      "cluster": 2,
+      "x": 7.7541,
+      "y": -2.8791,
+      "z": -2.9051,
+      "neighbors": [
+        {
+          "word": "red",
+          "sim": 0.9
+        },
+        {
+          "word": "purple",
+          "sim": 0.87
+        },
+        {
+          "word": "pink",
+          "sim": 0.842
+        },
+        {
+          "word": "blue",
+          "sim": 0.832
+        },
+        {
+          "word": "green",
+          "sim": 0.793
+        }
+      ]
+    },
+    {
+      "word": "purple",
+      "family": "colors",
+      "cluster": 2,
+      "x": 6.9598,
+      "y": -2.9009,
+      "z": -4.2993,
+      "neighbors": [
+        {
+          "word": "pink",
+          "sim": 0.919
+        },
+        {
+          "word": "yellow",
+          "sim": 0.87
+        },
+        {
+          "word": "red",
+          "sim": 0.832
+        },
+        {
+          "word": "blue",
+          "sim": 0.829
+        },
+        {
+          "word": "orange",
+          "sim": 0.77
+        }
+      ]
+    },
+    {
+      "word": "orange",
+      "family": "colors",
+      "cluster": 2,
+      "x": 6.4527,
+      "y": -2.4575,
+      "z": -5.4008,
+      "neighbors": [
+        {
+          "word": "blue",
+          "sim": 0.811
+        },
+        {
+          "word": "red",
+          "sim": 0.804
+        },
+        {
+          "word": "yellow",
+          "sim": 0.784
+        },
+        {
+          "word": "purple",
+          "sim": 0.77
+        },
+        {
+          "word": "pink",
+          "sim": 0.764
+        }
+      ]
+    },
+    {
+      "word": "pink",
+      "family": "colors",
+      "cluster": 2,
+      "x": 7.1805,
+      "y": -2.2898,
+      "z": -3.9331,
+      "neighbors": [
+        {
+          "word": "purple",
+          "sim": 0.919
+        },
+        {
+          "word": "blue",
+          "sim": 0.845
+        },
+        {
+          "word": "yellow",
+          "sim": 0.842
+        },
+        {
+          "word": "red",
+          "sim": 0.815
+        },
+        {
+          "word": "orange",
+          "sim": 0.764
+        }
+      ]
+    },
+    {
+      "word": "brown",
+      "family": "colors",
+      "cluster": 2,
+      "x": 3.6915,
+      "y": -0.2203,
+      "z": -4.3551,
+      "neighbors": [
+        {
+          "word": "green",
+          "sim": 0.84
+        },
+        {
+          "word": "red",
+          "sim": 0.715
+        },
+        {
+          "word": "blue",
+          "sim": 0.714
+        },
+        {
+          "word": "orange",
+          "sim": 0.627
+        },
+        {
+          "word": "pink",
+          "sim": 0.626
+        }
+      ]
+    },
+    {
+      "word": "happy",
+      "family": "emotions",
+      "cluster": 4,
+      "x": -0.0926,
+      "y": 5.2118,
+      "z": 0.0578,
+      "neighbors": [
+        {
+          "word": "love",
+          "sim": 0.8
+        },
+        {
+          "word": "sad",
+          "sim": 0.689
+        },
+        {
+          "word": "joy",
+          "sim": 0.629
+        },
+        {
+          "word": "mother",
+          "sim": 0.602
+        },
+        {
+          "word": "dog",
+          "sim": 0.584
+        }
+      ]
+    },
+    {
+      "word": "sad",
+      "family": "emotions",
+      "cluster": 4,
+      "x": -1.1476,
+      "y": 7.062,
+      "z": -1.9649,
+      "neighbors": [
+        {
+          "word": "happy",
+          "sim": 0.689
+        },
+        {
+          "word": "love",
+          "sim": 0.599
+        },
+        {
+          "word": "grief",
+          "sim": 0.583
+        },
+        {
+          "word": "joy",
+          "sim": 0.556
+        },
+        {
+          "word": "fear",
+          "sim": 0.493
+        }
+      ]
+    },
+    {
+      "word": "angry",
+      "family": "emotions",
+      "cluster": 4,
+      "x": 0.6574,
+      "y": 7.0711,
+      "z": -1.1212,
+      "neighbors": [
+        {
+          "word": "fear",
+          "sim": 0.727
+        },
+        {
+          "word": "hate",
+          "sim": 0.621
+        },
+        {
+          "word": "happy",
+          "sim": 0.571
+        },
+        {
+          "word": "grief",
+          "sim": 0.562
+        },
+        {
+          "word": "sad",
+          "sim": 0.491
+        }
+      ]
+    },
+    {
+      "word": "fear",
+      "family": "emotions",
+      "cluster": 4,
+      "x": 0.4109,
+      "y": 6.5448,
+      "z": 0.7998,
+      "neighbors": [
+        {
+          "word": "angry",
+          "sim": 0.727
+        },
+        {
+          "word": "hate",
+          "sim": 0.714
+        },
+        {
+          "word": "grief",
+          "sim": 0.63
+        },
+        {
+          "word": "love",
+          "sim": 0.558
+        },
+        {
+          "word": "happy",
+          "sim": 0.552
+        }
+      ]
+    },
+    {
+      "word": "love",
+      "family": "emotions",
+      "cluster": 4,
+      "x": -1.37,
+      "y": 4.3672,
+      "z": -1.4317,
+      "neighbors": [
+        {
+          "word": "happy",
+          "sim": 0.8
+        },
+        {
+          "word": "mother",
+          "sim": 0.748
+        },
+        {
+          "word": "joy",
+          "sim": 0.736
+        },
+        {
+          "word": "sister",
+          "sim": 0.675
+        },
+        {
+          "word": "father",
+          "sim": 0.664
+        }
+      ]
+    },
+    {
+      "word": "hate",
+      "family": "emotions",
+      "cluster": 4,
+      "x": 2.2344,
+      "y": 8.0,
+      "z": -0.7522,
+      "neighbors": [
+        {
+          "word": "fear",
+          "sim": 0.714
+        },
+        {
+          "word": "love",
+          "sim": 0.646
+        },
+        {
+          "word": "angry",
+          "sim": 0.621
+        },
+        {
+          "word": "happy",
+          "sim": 0.526
+        },
+        {
+          "word": "sad",
+          "sim": 0.457
+        }
+      ]
+    },
+    {
+      "word": "joy",
+      "family": "emotions",
+      "cluster": 4,
+      "x": -1.5521,
+      "y": 5.3802,
+      "z": -2.7806,
+      "neighbors": [
+        {
+          "word": "grief",
+          "sim": 0.755
+        },
+        {
+          "word": "love",
+          "sim": 0.736
+        },
+        {
+          "word": "happy",
+          "sim": 0.629
+        },
+        {
+          "word": "mother",
+          "sim": 0.575
+        },
+        {
+          "word": "sad",
+          "sim": 0.556
+        }
+      ]
+    },
+    {
+      "word": "grief",
+      "family": "emotions",
+      "cluster": 4,
+      "x": -2.9215,
+      "y": 6.8226,
+      "z": -2.5358,
+      "neighbors": [
+        {
+          "word": "joy",
+          "sim": 0.755
+        },
+        {
+          "word": "fear",
+          "sim": 0.63
+        },
+        {
+          "word": "sad",
+          "sim": 0.583
+        },
+        {
+          "word": "love",
+          "sim": 0.572
+        },
+        {
+          "word": "angry",
+          "sim": 0.562
+        }
+      ]
+    }
+  ],
+  "clusters": [
+    {
+      "id": 0,
+      "family": "family",
+      "color": "#34d399"
+    },
+    {
+      "id": 1,
+      "family": "royalty",
+      "color": "#38bdf8"
+    },
+    {
+      "id": 2,
+      "family": "colors",
+      "color": "#a78bfa"
+    },
+    {
+      "id": 3,
+      "family": "animals",
+      "color": "#fbbf24"
+    },
+    {
+      "id": 4,
+      "family": "emotions",
+      "color": "#fb7185"
+    }
+  ]
+}
