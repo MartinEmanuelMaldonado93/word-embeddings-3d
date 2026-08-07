@@ -11,6 +11,11 @@ const BASE_HEIGHT = 2.05;
 const APPEAR_DURATION = 0.9;
 const START_SCALE = 0.6;
 const MAX_STAGGER = 1.2;
+// size maps intensity (0.45..1.0) so low-sim neighbors shrink below base size
+const NEIGHBOR_MIN_SCALE = 0.82;
+const NEIGHBOR_MAX_SCALE = 1.22;
+const INTENSITY_MIN = 0.45;
+const INTENSITY_RANGE = 0.55;
 
 function makeTexture(word: string, dim: boolean): THREE.CanvasTexture {
   const canvas = document.createElement("canvas");
@@ -93,10 +98,17 @@ export function WordSprite({
   }, [brightTexture]);
 
   useEffect(() => {
-    // scale now also reflects similarity intensity when pinned
-    const baseFactor = isActive ? 1.28 : isHighlighted ? 1.12 : 1;
-    const intensityBoost = intensity != null && isHighlighted ? (intensity - 0.72) * 0.22 : 0;
-    const factor = baseFactor + intensityBoost;
+    // scale maps similarity intensity when pinned: low sim shrinks below base size
+    const t = THREE.MathUtils.clamp(
+      ((intensity ?? 1) - INTENSITY_MIN) / INTENSITY_RANGE,
+      0,
+      1,
+    );
+    const factor = isActive
+      ? 1.28
+      : isHighlighted
+        ? THREE.MathUtils.lerp(NEIGHBOR_MIN_SCALE, NEIGHBOR_MAX_SCALE, t)
+        : 1;
     target.current.set(
       baseScale.x * factor,
       baseScale.y * factor,
