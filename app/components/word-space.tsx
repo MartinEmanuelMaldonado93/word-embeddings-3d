@@ -220,7 +220,7 @@ export function WordSpace() {
   };
 
   const mobileControls = (
-    <div className="flex flex-col gap-2">
+    <div className="pointer-events-auto flex flex-col gap-2">
       <LegendPill clusters={data.clusters} />
       <NeighborSlider
         value={neighborCount}
@@ -258,7 +258,7 @@ export function WordSpace() {
       <Header />
 
       {/* Mobile: bottom split — stacked controls on the left, modal on the right */}
-      <div className="absolute inset-x-3 bottom-3 z-10 lg:hidden">
+      <div className="pointer-events-none absolute inset-x-3 bottom-3 z-10 lg:hidden">
         <div className="grid grid-cols-2 items-end gap-2">
           {mobileControls}
           {activeNode && (
@@ -266,7 +266,7 @@ export function WordSpace() {
               node={activeNode}
               colorOf={colorOf}
               neighborCount={neighborCount}
-              className="max-h-[42vh] overflow-y-auto rounded-2xl border border-white/10 bg-[#0a0a14]/90 p-3 backdrop-blur-md"
+              className="pointer-events-auto max-h-[42vh] overflow-y-auto rounded-2xl border border-white/10 bg-[#0a0a14]/90 p-3 backdrop-blur-md"
             />
           )}
         </div>
