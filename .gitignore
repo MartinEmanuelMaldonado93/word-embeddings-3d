@@ -9,3 +9,7 @@
 # Python
 /venv/
 /scripts/data/
+
+# Vercel
+/.vercel/
+.vercel
