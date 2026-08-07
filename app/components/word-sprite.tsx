@@ -40,7 +40,7 @@ function makeTexture(word: string, dim: boolean): THREE.CanvasTexture {
   return texture;
 }
 
-interface WordSpriteProps {
+type WordSpriteProps = {
   node: WordNode;
   color: string;
   isActive: boolean;
@@ -48,7 +48,7 @@ interface WordSpriteProps {
   hasActive: boolean;
   onHover: (word: string | null) => void;
   onPin: (word: string) => void;
-}
+};
 
 export function WordSprite({
   node,

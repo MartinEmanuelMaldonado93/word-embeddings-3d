@@ -1,9 +1,9 @@
-export interface WordNeighbor {
+export type WordNeighbor = {
   word: string;
   sim: number;
-}
+};
 
-export interface WordNode {
+export type WordNode = {
   word: string;
   family: string;
   cluster: number;
@@ -11,15 +11,15 @@ export interface WordNode {
   y: number;
   z: number;
   neighbors: WordNeighbor[];
-}
+};
 
-export interface ClusterInfo {
+export type ClusterInfo = {
   id: number;
   family: string;
   color: string;
-}
+};
 
-export interface WordData {
+export type WordData = {
   words: WordNode[];
   clusters: ClusterInfo[];
-}
+};

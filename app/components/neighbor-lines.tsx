@@ -2,12 +2,12 @@ import { Line } from "@react-three/drei";
 
 import type { WordNode } from "~/types";
 
-interface NeighborLinesProps {
+type NeighborLinesProps = {
   node: WordNode;
   byWord: Map<string, WordNode>;
   colorOf: (word: string) => string;
   neighborCount: number;
-}
+};
 
 export function NeighborLines({
   node,
