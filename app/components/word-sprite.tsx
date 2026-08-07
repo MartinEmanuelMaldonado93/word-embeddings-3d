@@ -8,6 +8,9 @@ import type { WordNode } from "~/types";
 const FONT = "700 96px Inter, ui-sans-serif, system-ui, sans-serif";
 const TEXTURE_HEIGHT = 160;
 const BASE_HEIGHT = 2.05;
+const APPEAR_DURATION = 0.9;
+const START_SCALE = 0.6;
+const MAX_STAGGER = 1.2;
 
 function makeTexture(word: string, dim: boolean): THREE.CanvasTexture {
   const canvas = document.createElement("canvas");
@@ -60,6 +63,9 @@ export function WordSprite({
   const materialRef = useRef<THREE.SpriteMaterial>(null);
   const target = useRef(new THREE.Vector3());
   const targetOpacity = useRef(1);
+  const revealScale = useRef(new THREE.Vector3());
+  const startRef = useRef<number | null>(null);
+  const delay = useMemo(() => Math.random() * MAX_STAGGER, []);
   const [hovering, setHovering] = useState(false);
   useCursor(hovering);
 
@@ -88,7 +94,7 @@ export function WordSprite({
 
   useEffect(() => {
     if (spriteRef.current) {
-      spriteRef.current.scale.copy(baseScale);
+      spriteRef.current.scale.copy(baseScale).multiplyScalar(START_SCALE);
     }
     return () => {
       brightTexture.dispose();
@@ -109,16 +115,29 @@ export function WordSprite({
     materialRef.current?.color.set(tint);
   }, [color, isActive, isHighlighted]);
 
-  useFrame((_, delta) => {
+  useFrame((state, delta) => {
     const sprite = spriteRef.current;
     const material = materialRef.current;
-    if (sprite) {
-      sprite.scale.lerp(target.current, Math.min(1, delta * 9));
-    }
-    if (material) {
-      material.opacity +=
-        (targetOpacity.current - material.opacity) * Math.min(1, delta * 9);
-    }
+    if (!sprite || !material) return;
+    if (startRef.current === null) startRef.current = state.clock.elapsedTime;
+    const elapsed = state.clock.elapsedTime - startRef.current - delay;
+    const reveal = THREE.MathUtils.smoothstep(
+      elapsed / APPEAR_DURATION,
+      0,
+      1,
+    );
+    const scaleFactor = START_SCALE + (1 - START_SCALE) * reveal;
+    sprite.scale.lerp(
+      revealScale.current.set(
+        target.current.x * scaleFactor,
+        target.current.y * scaleFactor,
+        target.current.z * scaleFactor,
+      ),
+      Math.min(1, delta * 9),
+    );
+    material.opacity +=
+      (targetOpacity.current * reveal - material.opacity) *
+      Math.min(1, delta * 9);
   });
 
   return (
@@ -144,6 +163,7 @@ export function WordSprite({
         map={brightTexture}
         transparent
         depthWrite={false}
+        opacity={0}
       />
     </sprite>
   );

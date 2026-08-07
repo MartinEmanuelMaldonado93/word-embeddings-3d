@@ -215,7 +215,7 @@ export function WordSpace() {
   return (
     <div className="relative h-screen w-screen overflow-hidden">
       <Canvas
-        camera={{ position: [0, 0, 26], fov: 50 }}
+        camera={{ position: [9, 4, 22], fov: 50 }}
         dpr={[1, 2]}
         onPointerMissed={() => setPinned(null)}
       >
