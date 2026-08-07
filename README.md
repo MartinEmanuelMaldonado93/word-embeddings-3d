@@ -1,8 +1,20 @@
 # Word Embeddings 3D
 
+**Live demo → https://word-embeddings-3d.vercel.app**
+
 Interactive 3D map of word embeddings: words float in space, and semantically
 close words (nearby in vector space) sit next to each other — the same idea as
 the famous 3Blue1Brown LLM video, hyper-simplified.
+
+## Features
+
+- **Hover** a word to highlight its cluster and draw lines to its nearest neighbors.
+- **Click / pin** a word to focus it: the camera swings in an arc around the
+  origin while the word floats into view, and its neighbors expand outward.
+- **Similarity as visual intensity** — when a word is pinned, each neighbor's
+  size, brightness and line width reflect its cosine similarity: more similar =
+  bigger and brighter, less similar = smaller and dimmer.
+- **Neighbor count slider** (3–8) to control how many neighbors are shown.
 
 ## How it works
 
@@ -11,11 +23,19 @@ the famous 3Blue1Brown LLM video, hyper-simplified.
    [GloVe](https://nlp.stanford.edu/projects/glove/) vectors.
 2. **Dimensionality reduction** — PCA projects 50d → 3d (deterministic, ~52%
    of the variance kept). Words are clustered with k-means for color coding.
-3. **Neighbors** — the top-5 nearest neighbors per word are computed by cosine
+3. **Neighbors** — the top-N nearest neighbors per word are computed by cosine
    similarity in the original 50d space (more faithful than the 3D projection).
 4. **Rendering** — React Router 8 + React 19 + `three` + `@react-three/fiber`.
-   Hover a word to grow it, highlight its cluster, and draw lines to its
-   nearest neighbors.
+
+## Deployment
+
+Deployed to [Vercel](https://vercel.com) using the official
+[`@vercel/react-router`](https://www.npmjs.com/package/@vercel/react-router)
+preset (`vercelPreset()` in `react-router.config.ts`).
+
+```bash
+vercel --prod        # deploy from CLI (no git remote needed)
+```
 
 ## Development
 
