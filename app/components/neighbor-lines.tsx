@@ -24,7 +24,7 @@ export function NeighborLines({ node, byWord, colorOf }: NeighborLinesProps) {
             color={colorOf(neighbor.word)}
             lineWidth={1.6}
             transparent
-            opacity={0.5}
+            opacity={0.6}
           />
         );
       })}

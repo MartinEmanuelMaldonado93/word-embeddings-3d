@@ -9,16 +9,7 @@ const FONT = "700 96px Inter, ui-sans-serif, system-ui, sans-serif";
 const TEXTURE_HEIGHT = 160;
 const BASE_HEIGHT = 2.05;
 
-export function mixHex(hex: string, other: string, t: number): string {
-  const a = parseInt(hex.slice(1), 16);
-  const b = parseInt(other.slice(1), 16);
-  const r = Math.round(((a >> 16) & 255) * (1 - t) + ((b >> 16) & 255) * t);
-  const g = Math.round(((a >> 8) & 255) * (1 - t) + ((b >> 8) & 255) * t);
-  const bl = Math.round((a & 255) * (1 - t) + (b & 255) * t);
-  return `rgb(${r},${g},${bl})`;
-}
-
-function makeTexture(word: string): THREE.CanvasTexture {
+function makeTexture(word: string, dim: boolean): THREE.CanvasTexture {
   const canvas = document.createElement("canvas");
   const ctx = canvas.getContext("2d")!;
   ctx.font = FONT;
@@ -29,9 +20,15 @@ function makeTexture(word: string): THREE.CanvasTexture {
   ctx.font = FONT;
   ctx.textAlign = "center";
   ctx.textBaseline = "middle";
-  ctx.shadowColor = "rgba(255,255,255,0.85)";
-  ctx.shadowBlur = 28;
-  ctx.fillStyle = "#ffffff";
+  if (dim) {
+    ctx.shadowColor = "rgba(255,255,255,0.2)";
+    ctx.shadowBlur = 10;
+    ctx.fillStyle = "#90909c";
+  } else {
+    ctx.shadowColor = "rgba(255,255,255,0.85)";
+    ctx.shadowBlur = 28;
+    ctx.fillStyle = "#ffffff";
+  }
   ctx.fillText(word, width / 2, TEXTURE_HEIGHT / 2);
 
   const texture = new THREE.CanvasTexture(canvas);
@@ -62,12 +59,15 @@ export function WordSprite({
   const [hovering, setHovering] = useState(false);
   useCursor(hovering);
 
-  const texture = useMemo(() => makeTexture(node.word), [node.word]);
+  const dim = !isActive && !isHighlighted;
+
+  const brightTexture = useMemo(() => makeTexture(node.word, false), [node.word]);
+  const dimTexture = useMemo(() => makeTexture(node.word, true), [node.word]);
 
   const baseScale = useMemo(() => {
-    const aspect = texture.image.width / texture.image.height;
+    const aspect = brightTexture.image.width / brightTexture.image.height;
     return new THREE.Vector3(aspect * BASE_HEIGHT, BASE_HEIGHT, 1);
-  }, [texture]);
+  }, [brightTexture]);
 
   useEffect(() => {
     const factor = isActive ? 1.28 : isHighlighted ? 1.12 : 1;
@@ -82,15 +82,22 @@ export function WordSprite({
     if (spriteRef.current) {
       spriteRef.current.scale.copy(baseScale);
     }
-    return () => texture.dispose();
-  }, [baseScale, texture]);
+    return () => {
+      brightTexture.dispose();
+      dimTexture.dispose();
+    };
+  }, [baseScale, brightTexture, dimTexture]);
 
   useEffect(() => {
-    const tint = isActive
-      ? "#ffffff"
-      : isHighlighted
-        ? mixHex(color, "#ffffff", 0.5)
-        : color;
+    const material = materialRef.current;
+    if (material) {
+      material.map = dim ? dimTexture : brightTexture;
+      material.needsUpdate = true;
+    }
+  }, [dim, brightTexture, dimTexture]);
+
+  useEffect(() => {
+    const tint = isActive ? "#ffffff" : isHighlighted ? color : "#ffffff";
     materialRef.current?.color.set(tint);
   }, [color, isActive, isHighlighted]);
 
@@ -121,7 +128,7 @@ export function WordSprite({
     >
       <spriteMaterial
         ref={materialRef}
-        map={texture}
+        map={brightTexture}
         transparent
         depthWrite={false}
       />
