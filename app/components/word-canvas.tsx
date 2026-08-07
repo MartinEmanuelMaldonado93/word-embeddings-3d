@@ -103,9 +103,10 @@ function CameraFocus({
   const animRef = useRef<{
     start: number | null;
     fromTarget: THREE.Vector3;
-    fromCam: THREE.Vector3;
     toTarget: THREE.Vector3;
-    toCam: THREE.Vector3;
+    radius: number;
+    fromQ: THREE.Quaternion;
+    toQ: THREE.Quaternion;
   } | null>(null);
   const animatingRef = useRef(false);
   const hadFocusRef = useRef(false);
@@ -126,42 +127,44 @@ function CameraFocus({
     const controls = controlsRef.current;
     const startTarget = controls.target.clone() as THREE.Vector3;
     const startCam = camera.position.clone() as THREE.Vector3;
+    const radius = startCam.length(); // camera stays on a fixed-radius sphere around the ORIGIN
+    if (radius < 1e-6) return;
+
+    let toTarget: THREE.Vector3;
+    let toCam: THREE.Vector3;
 
     if (focusPos) {
-      // Keep exact same distance — orbit/pan to center word, no zoom
-      const dir = new THREE.Vector3().subVectors(startCam, startTarget).normalize();
-      if (dir.lengthSq() < 1e-6) dir.set(0, 0, 1);
-      const dist = startCam.distanceTo(startTarget);
-
-      const toTarget = focusPos.clone();
-      const toCam = toTarget.clone().add(dir.multiplyScalar(dist));
-
-      animRef.current = {
-        start: null,
-        fromTarget: startTarget,
-        fromCam: startCam,
-        toTarget,
-        toCam,
-      };
-      animatingRef.current = true;
+      // swing around (0,0,0), not around the word — keeps the camera close to center
+      const arcAngle = 0.35; // ~20° sweep, small so it never drifts far
+      toTarget = focusPos.clone();
+      toCam = startCam.clone().applyAxisAngle(new THREE.Vector3(0, 1, 0), arcAngle);
       hadFocusRef.current = true;
-      return;
+    } else {
+      // focusPos === null → reset to initial view if we had a focus before
+      if (!hadFocusRef.current) return;
+      toTarget = new THREE.Vector3(0, 0, 0);
+      toCam = new THREE.Vector3(9, 4, 22);
+      hadFocusRef.current = false;
     }
 
-    // focusPos === null → reset to initial view if we had a focus before
-    if (!hadFocusRef.current) return;
-    const toTarget = new THREE.Vector3(0, 0, 0);
-    const toCam = new THREE.Vector3(9, 4, 22);
+    const fromQ = new THREE.Quaternion().setFromUnitVectors(
+      new THREE.Vector3(0, 0, 1),
+      startCam.clone().normalize(),
+    );
+    const toQ = new THREE.Quaternion().setFromUnitVectors(
+      new THREE.Vector3(0, 0, 1),
+      toCam.clone().normalize(),
+    );
 
     animRef.current = {
       start: null,
       fromTarget: startTarget,
-      fromCam: startCam,
       toTarget,
-      toCam,
+      radius,
+      fromQ,
+      toQ,
     };
     animatingRef.current = true;
-    hadFocusRef.current = false;
   }, [focusPos, camera, controlsRef]);
 
   useFrame((state) => {
@@ -174,8 +177,14 @@ function CameraFocus({
     // smoothstep: 3t² - 2t³ — nice "smooth step" ease in/out
     const eased = t * t * (3 - 2 * t);
 
-    controls.target.lerpVectors(animRef.current.fromTarget, animRef.current.toTarget, eased);
-    camera.position.lerpVectors(animRef.current.fromCam, animRef.current.toCam, eased);
+    const { fromTarget, toTarget, radius, fromQ, toQ } = animRef.current;
+    // slerp camera direction → circular swing around the ORIGIN at constant radius
+    const q = fromQ.clone().slerp(toQ, eased);
+    const dir = new THREE.Vector3(0, 0, 1).applyQuaternion(q);
+
+    controls.target.lerpVectors(fromTarget, toTarget, eased);
+    camera.position.copy(dir).multiplyScalar(radius);
+    camera.lookAt(controls.target);
     controls.update();
 
     if (t >= 1) animatingRef.current = false;
