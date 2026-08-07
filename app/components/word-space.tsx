@@ -266,7 +266,7 @@ export function WordSpace() {
               node={activeNode}
               colorOf={colorOf}
               neighborCount={neighborCount}
-              className="pointer-events-auto max-h-[42vh] overflow-y-auto rounded-2xl border border-white/10 bg-[#0a0a14]/90 p-3 backdrop-blur-md"
+              className="pointer-events-auto max-h-[25vh] overflow-y-auto rounded-2xl border border-white/10 bg-[#0a0a14]/90 p-3 backdrop-blur-md"
             />
           )}
         </div>
