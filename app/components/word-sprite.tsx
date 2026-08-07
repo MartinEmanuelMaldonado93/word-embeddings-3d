@@ -46,6 +46,8 @@ type WordSpriteProps = {
   isActive: boolean;
   isHighlighted: boolean;
   hasActive: boolean;
+  expandedPos: THREE.Vector3 | null;
+  intensity: number | null;
   onHover: (word: string | null) => void;
   onPin: (word: string) => void;
 };
@@ -56,6 +58,8 @@ export function WordSprite({
   isActive,
   isHighlighted,
   hasActive,
+  expandedPos,
+  intensity,
   onHover,
   onPin,
 }: WordSpriteProps) {
@@ -68,6 +72,15 @@ export function WordSprite({
   const delay = useMemo(() => Math.random() * MAX_STAGGER, []);
   const [hovering, setHovering] = useState(false);
   useCursor(hovering);
+  const originalPos = useMemo(
+    () => new THREE.Vector3(node.x, node.y, node.z),
+    [node.x, node.y, node.z],
+  );
+  const floatPhase = useMemo(() => {
+    let h = 0;
+    for (let i = 0; i < node.word.length; i++) h = (h * 31 + node.word.charCodeAt(i)) % 1000;
+    return (h / 1000) * Math.PI * 2;
+  }, [node.word]);
 
   const dim = !isActive && !isHighlighted;
 
@@ -80,17 +93,26 @@ export function WordSprite({
   }, [brightTexture]);
 
   useEffect(() => {
-    const factor = isActive ? 1.28 : isHighlighted ? 1.12 : 1;
+    // scale now also reflects similarity intensity when pinned
+    const baseFactor = isActive ? 1.28 : isHighlighted ? 1.12 : 1;
+    const intensityBoost = intensity != null && isHighlighted ? (intensity - 0.72) * 0.22 : 0;
+    const factor = baseFactor + intensityBoost;
     target.current.set(
       baseScale.x * factor,
       baseScale.y * factor,
       baseScale.z,
     );
-  }, [baseScale, isActive, isHighlighted]);
+  }, [baseScale, isActive, isHighlighted, intensity]);
 
   useEffect(() => {
-    targetOpacity.current = isActive || isHighlighted ? 1 : hasActive ? 0 : 1;
-  }, [isActive, isHighlighted, hasActive]);
+    if (isActive || !isHighlighted) {
+      targetOpacity.current = isActive || isHighlighted ? 1 : hasActive ? 0 : 1;
+    } else {
+      // highlighted neighbor: opacity tracks intensity (dimmer for low sim)
+      const t = intensity ?? 1;
+      targetOpacity.current = 0.62 + t * 0.38;
+    }
+  }, [isActive, isHighlighted, hasActive, intensity]);
 
   useEffect(() => {
     if (spriteRef.current) {
@@ -111,9 +133,24 @@ export function WordSprite({
   }, [dim, brightTexture, dimTexture]);
 
   useEffect(() => {
-    const tint = isActive ? "#ffffff" : isHighlighted ? color : "#ffffff";
-    materialRef.current?.color.set(tint);
-  }, [color, isActive, isHighlighted]);
+    if (isActive) {
+      materialRef.current?.color.set("#ffffff");
+      return;
+    }
+    if (!isHighlighted) {
+      materialRef.current?.color.set("#ffffff");
+      return;
+    }
+    if (intensity == null) {
+      materialRef.current?.color.set(color);
+      return;
+    }
+    // blend cluster color toward muted gray for low intensity
+    const c = new THREE.Color(color);
+    const gray = new THREE.Color("#6e6e7e");
+    c.lerp(gray, 1 - intensity);
+    materialRef.current?.color.set(c);
+  }, [color, isActive, isHighlighted, intensity]);
 
   useFrame((state, delta) => {
     const sprite = spriteRef.current;
@@ -138,6 +175,24 @@ export function WordSprite({
     material.opacity +=
       (targetOpacity.current * reveal - material.opacity) *
       Math.min(1, delta * 9);
+
+    // expanded position + enhanced floating when neighbor of pinned word
+    const base = expandedPos ?? originalPos;
+    const isPinnedNeighbor = !!expandedPos;
+    const idleAmp = 0.025;
+    const activeAmp = isPinnedNeighbor ? 0.14 : isActive || isHighlighted ? 0.05 : idleAmp;
+    const speed = isPinnedNeighbor ? 1.15 : 0.65;
+    const floatY = Math.sin(state.clock.elapsedTime * speed + floatPhase) * activeAmp;
+    const floatX = Math.cos(state.clock.elapsedTime * speed * 0.7 + floatPhase) * activeAmp * 0.35;
+    const floatZ = Math.sin(state.clock.elapsedTime * speed * 0.5 + floatPhase * 1.3) * activeAmp * 0.25;
+    const targetPos = new THREE.Vector3(
+      base.x + floatX,
+      base.y + floatY,
+      base.z + floatZ,
+    );
+    // smooth lerp to targetPos (expand) — a bit slower to feel like flow
+    const posLerp = isPinnedNeighbor ? 2.5 : 3.5;
+    sprite.position.lerp(targetPos, Math.min(1, delta * posLerp));
   });
 
   return (

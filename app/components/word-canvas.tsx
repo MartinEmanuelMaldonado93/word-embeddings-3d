@@ -17,6 +17,8 @@ type SceneProps = {
   highlighted: Set<string>;
   hasActive: boolean;
   neighborCount: number;
+  expandedMap: Map<string, THREE.Vector3>;
+  intensityMap: Map<string, number>;
   onHover: (word: string | null) => void;
   onPin: (word: string) => void;
 };
@@ -30,6 +32,8 @@ function Scene({
   highlighted,
   hasActive,
   neighborCount,
+  expandedMap,
+  intensityMap,
   onHover,
   onPin,
 }: SceneProps) {
@@ -52,6 +56,8 @@ function Scene({
           isActive={node.word === active}
           isHighlighted={highlighted.has(node.word)}
           hasActive={hasActive}
+          expandedPos={expandedMap.get(node.word) ?? null}
+          intensity={intensityMap.get(node.word) ?? null}
           onHover={onHover}
           onPin={onPin}
         />
@@ -63,6 +69,8 @@ function Scene({
           byWord={byWord}
           colorOf={colorOf}
           neighborCount={neighborCount}
+          expandedMap={expandedMap}
+          intensityMap={intensityMap}
         />
       )}
 
@@ -176,7 +184,7 @@ function CameraFocus({
   return null;
 }
 
-export type WordCanvasProps = SceneProps & {
+export type WordCanvasProps = Omit<SceneProps, "expandedMap" | "intensityMap"> & {
   onPointerMissed: () => void;
   pinned: string | null;
 };
@@ -204,6 +212,53 @@ export function WordCanvas({
     return new THREE.Vector3(node.x, node.y, node.z);
   }, [pinned, byWord]);
 
+  const expandedMap = useMemo(() => {
+    const map = new Map<string, THREE.Vector3>();
+    if (!pinned) return map;
+    const activeNode = byWord.get(pinned);
+    if (!activeNode) return map;
+    const expandBy = 1.15;
+    for (const neighbor of activeNode.neighbors.slice(0, neighborCount)) {
+      const target = byWord.get(neighbor.word);
+      if (!target) continue;
+      const dir = new THREE.Vector3(
+        target.x - activeNode.x,
+        target.y - activeNode.y,
+        target.z - activeNode.z,
+      );
+      const len = dir.length();
+      if (len < 1e-6) continue;
+      dir.divideScalar(len);
+      const expanded = new THREE.Vector3(
+        target.x + dir.x * expandBy,
+        target.y + dir.y * expandBy,
+        target.z + dir.z * expandBy,
+      );
+      map.set(neighbor.word, expanded);
+    }
+    return map;
+  }, [pinned, byWord, neighborCount]);
+
+  const intensityMap = useMemo(() => {
+    const map = new Map<string, number>();
+    if (!pinned) return map;
+    const activeNode = byWord.get(pinned);
+    if (!activeNode) return map;
+    const slice = activeNode.neighbors.slice(0, neighborCount);
+    if (slice.length === 0) return map;
+    const sims = slice.map((n) => n.sim);
+    const min = Math.min(...sims);
+    const max = Math.max(...sims);
+    const range = max - min || 1;
+    for (const n of slice) {
+      const norm = (n.sim - min) / range; // 0..1 rank within visible neighbors
+      // map to 0.45..1.0 so lowest still visible but clearly dimmer
+      const intensity = 0.45 + norm * 0.55;
+      map.set(n.word, intensity);
+    }
+    return map;
+  }, [pinned, byWord, neighborCount]);
+
   return (
     <Canvas
       camera={{ position: [9, 4, 22], fov: 50 }}
@@ -222,6 +277,8 @@ export function WordCanvas({
         highlighted={highlighted}
         hasActive={hasActive}
         neighborCount={neighborCount}
+        expandedMap={expandedMap}
+        intensityMap={intensityMap}
         onHover={onHover}
         onPin={onPin}
       />
